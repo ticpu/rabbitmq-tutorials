@@ -1,57 +1,48 @@
-# RabbitMQ Tutorials
+# Go code for RabbitMQ tutorials
 
-This project contains code for [RabbitMQ tutorials](https://www.rabbitmq.com/getstarted.html) with
-their ports to various languages.
 
-This repository only contains runnable code. Please consult [tutorials on the site](https://www.rabbitmq.com/getstarted.html)
-to learn more about [the concepts](https://www.rabbitmq.com/getstarted.html), requirements, supported client library version and so on.
+Here you can find Go code examples from [RabbitMQ tutorials](https://www.rabbitmq.com/getstarted.html).
 
-And please check out the rest of the [RabbitMQ documentation](https://www.rabbitmq.com/documentation.html)!
 
-## Prerequisites
+## Requirements
 
-All tutorials **require a RabbitMQ node running on localhost** with stock (default) settings.
+To run this code you need [Go RabbitMQ client](https://github.com/streadway/amqp):
 
-Please refer to RabbitMQ documentation to learn
-more about various [installation options](https://www.rabbitmq.com/download.html):
+    go get github.com/streadway/amqp
 
- * A [Windows installer](https://www.rabbitmq.com/install-windows.html)
- * A [Docker image](https://hub.docker.com/_/rabbitmq/)
- * [Homebrew](https://www.rabbitmq.com/install-homebrew.html) on MacOS
- * Packages for [Ubuntu and Debian](https://www.rabbitmq.com/install-debian.html) as well as [RPM-based distributions](https://www.rabbitmq.com/install-rpm.html) 
- * A generic [binary build](https://www.rabbitmq.com/install-generic-unix.html) for Linux, *BSD and other UNIX-like systems
 
-## Languages
+## Code
 
-The following ports are available:
+Code examples are executed via `go run`:
 
- * [C#](./dotnet)
- * [C# (with Visual Studio)](./dotnet-visual-studio)
- * [Clojure](./clojure)
- * [Common Lisp](./common-lisp)
- * [Dart](./dart)
- * [Elixir](./elixir) 
- * [Erlang](./erlang)
- * [Go](./go)
- * [Haskell](./haskell)
- * [JavaScript (with Node and amqp-node)](./javascript-nodejs) (using callbacks)
- * [JavaScript (with Node and amqp-node)](https://github.com/squaremo/amqp.node/tree/master/examples) (using promises/futures)
- * [Java with Maven](./java-mvn)
- * [Java (with IntelliJ IDEA)](./java-idea)
- * [Java](./java) (with manual dependency management)
- * [Kotlin](./kotlin)
- * [PHP (with php-amqplib)](./php)
- * [PHP (with php-amqp)](./php-amqp)
- * [PHP (with queue-interop)](./php-interop)
- * [Perl](./perl)
- * [Python (with Pika)](./python)
- * [Ruby (with Bunny)](./ruby)
- * [Rust](./rust)
- * [Scala](./scala)
- * [Swift](./swift)
- * [Spring AMQP](./spring-amqp)
- * [SoapUI](./soapui)
- 
-## License
+[Tutorial one: "Hello World!"](https://www.rabbitmq.com/tutorial-one-go.html):
 
-Released under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt).
+    go run send.go
+    go run receive.go
+
+[Tutorial two: Work Queues](https://www.rabbitmq.com/tutorial-two-go.html):
+
+    go run new_task.go hello world
+    go run worker.go
+
+[Tutorial three: Publish/Subscribe](https://www.rabbitmq.com/tutorial-three-go.html)
+
+    go run receive_logs.go
+    go run emit_log.go hello world
+
+[Tutorial four: Routing](https://www.rabbitmq.com/tutorial-four-go.html)
+
+    go run receive_logs_direct.go info warn
+    go run emit_log_direct.go warn "a warning"
+
+[Tutorial five: Topics](https://www.rabbitmq.com/tutorial-five-go.html)
+
+    go run receive_logs_topic.go "kern.*" "*.critical"
+    go run emit_log_topic.go kern.critical "A critical kernel error"
+
+[Tutorial six: RPC](https://www.rabbitmq.com/tutorial-six-go.html)
+
+    go run rpc_server.go
+    go run rpc_client.go 10
+
+To learn more, see [Go RabbitMQ client](https://github.com/streadway/amqp).
